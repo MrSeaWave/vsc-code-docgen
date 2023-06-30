@@ -9,6 +9,6 @@ export interface IAProps {
   className?: string;
 }
 
-const A: React.FC<IAProps> = () => <>Hello World!</>
+const A: React.FC<IAProps> = () => <>Hello World!</>;
 
 export default A;
