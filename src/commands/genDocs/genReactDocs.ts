@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as ts from 'typescript';
 import * as docgen from 'react-docgen-typescript';
+import { reactTSParser } from './apiParser';
 
 type Options = {};
 
@@ -47,5 +48,5 @@ export async function genReactDocs(file: vscode.Uri, options?: Options) {
       },
     }
   );
-  let componentDocs = docParser.parse(file.path);
+  let componentDocs = docParser.parse(file.path).forEach(reactTSParser);
 }

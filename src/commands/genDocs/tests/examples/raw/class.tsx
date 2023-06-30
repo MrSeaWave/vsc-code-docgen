@@ -16,10 +16,9 @@ export interface IAProps {
   size: 'small' | 'large';
 }
 
-// eslint-disable-next-line react/prefer-stateless-function
 class A extends React.Component<IAProps> {
   render() {
-    return <>Hello World!</>
+    return <>Hello World!</>;
   }
 }
 
