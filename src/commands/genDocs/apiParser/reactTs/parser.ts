@@ -11,9 +11,11 @@ let FIELDS = [
 ] as const;
 let LOCALE_DESC_REG = /(?:^|\n+)@description\s+/;
 
-// TODO 生成类型定义 （模仿dumi （v1.1.0 版本的api-parser
-// ~~然后生成MD格式 （https://github.com/cytle/react-docgen-typescript-markdown-render/tree/master~~
-// An html To markdown (https://github.com/mixmark-io/turndown) (不支持table转换)
+/**
+ * 由  ComponentDoc 转换成 Api 的数据格式
+ * @param componentDoc
+ * @returns
+ */
 function toAtomPropsDefinition(
   componentDoc: docgen.ComponentDoc
 ): ApiDefinition {
