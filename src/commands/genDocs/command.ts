@@ -4,7 +4,8 @@ import { genMD } from './genMD';
 
 export async function genDocsToClipboard(file: vscode.Uri, options?: Options) {
   try {
-    let { docs, num } = await genReactDocs(file.path);
+    let filePath = getActiveFilePath(file);
+    let { docs, num } = await genReactDocs(filePath);
     console.log('docs: \n', docs);
     await vscode.env.clipboard.writeText(docs);
     let message = '类型文档已成功复制到剪贴板📋';
@@ -13,6 +14,25 @@ export async function genDocsToClipboard(file: vscode.Uri, options?: Options) {
     // @ts-expect-error
     vscode.window.showErrorMessage(error.message || '复制失败，请重试');
   }
+}
+
+/**
+ * 获取当前文件路径
+ * @param file
+ * @returns
+ */
+function getActiveFilePath(file: vscode.Uri) {
+  if (file) {
+    return file.path;
+  }
+  // 获取当前打开的文件的 editor
+  const activeEditor = vscode.window.activeTextEditor;
+  if (activeEditor) {
+    const activeFilePath = activeEditor.document.uri.path; //fileName;
+    return activeFilePath;
+  }
+
+  throw new Error('文件路径获取失败');
 }
 
 type Options = {};
