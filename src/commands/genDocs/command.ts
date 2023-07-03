@@ -7,8 +7,10 @@ export async function genDocsToClipboard(file: vscode.Uri, options?: Options) {
     let filePath = getActiveFilePath(file);
     let { docs, num } = await genReactDocs(filePath);
     console.log('docs: \n', docs);
-    await vscode.env.clipboard.writeText(docs);
-    let message = '类型文档已成功复制到剪贴板📋';
+    if (docs) {
+      await vscode.env.clipboard.writeText(docs);
+    }
+    let message = docs ? '类型文档已成功复制到剪贴板📋' : '该文件暂无导出~';
     vscode.window.showInformationMessage(message);
   } catch (error) {
     // @ts-expect-error

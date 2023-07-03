@@ -28,7 +28,7 @@
       "explorer/context": [
         {
           "command": "vsc-code-docgen.genDocToClipboard",
-          "when": "editorLangId==typescript || editorLangId==typescriptreact"
+          "when": "resourceLangId==typescript || resourceLangId==typescriptreact"
         }
       ],
       "editor/context": [
