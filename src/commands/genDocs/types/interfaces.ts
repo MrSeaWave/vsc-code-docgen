@@ -1,4 +1,4 @@
-type LocaleDescKey = `description${string}`;
+// type LocaleDescKey = `description${string}`;
 
 export interface AtomPropsDefinition {
   /**
@@ -12,7 +12,7 @@ export interface AtomPropsDefinition {
   /**
    * component property description
    */
-  [descriptionKey: LocaleDescKey]: string;
+  description?: string;
   /**
    * component property type
    */

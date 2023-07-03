@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { Commands } from './constants/commands';
-import { genDocs } from './commands';
+import { genDocsToClipboard } from './commands';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -21,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
   let genDocToClipboard = vscode.commands.registerCommand(
     Commands.genDocToClipboard,
     (uri) => {
-      genDocs(uri);
+      genDocsToClipboard(uri);
       // vscode.window.showInformationMessage(
       //   `当前文件(夹)路径是：${uri ? uri.path : '空'}`
       // );

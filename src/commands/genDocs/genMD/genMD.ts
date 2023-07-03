@@ -3,6 +3,7 @@ import { ApiDefinition } from '../types';
 import { Column, heading, inlineCode, root, table, text } from './toMDAst';
 // const { toMarkdown } = madastUtils;
 
+// TODO 未来可由用户控制排序
 let columns: Column[] = [
   { title: '属性名', dataIndex: 'identifier' },
   { title: '描述', dataIndex: 'description' },
@@ -39,6 +40,5 @@ export async function genMD(api: ApiDefinition) {
   let node = root([heading([text(exportName)], 3), table(columns, attrs)]);
 
   const str = toMarkdown(node, { extensions: [gfmToMarkdown()] });
-  console.log('str', str);
   return str;
 }

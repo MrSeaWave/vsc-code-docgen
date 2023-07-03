@@ -132,8 +132,8 @@ export function table(
       ...dataSource.map((data) => {
         let children = columns.map((item) => {
           const { dataIndex, render } = item;
-          let raw = data[dataIndex] || '';
-          let value = render ? render(raw) : text(String(raw));
+          let raw = data[dataIndex];
+          let value = render ? render(raw) : text(String(raw || ''));
           return tableCell(tableCellContentToNode(value));
         });
 

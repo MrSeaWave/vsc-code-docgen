@@ -9,7 +9,7 @@ let FIELDS = [
   'defaultValue',
   'required',
 ] as const;
-let LOCALE_DESC_REG = /(?:^|\n+)@description\s+/;
+// let LOCALE_DESC_REG = /(?:^|\n+)@description\s+/;
 
 /**
  * 由  ComponentDoc 转换成 Api 的数据格式
@@ -34,27 +34,7 @@ function toAtomPropsDefinition(
           break;
 
         case 'description':
-          // the workaround way for support locale description
-          // detect locale description content, such as @description.zh-CN xxx
-          if (LOCALE_DESC_REG.test(prop.description)) {
-            // split by @description symbol
-            const groups = prop.description
-              .split(LOCALE_DESC_REG)
-              .filter(Boolean);
-
-            groups?.forEach((str) => {
-              let matches = str.match(/^(\.[\w-]+)?\s*([^]*)$/);
-              if (!matches) {
-                return;
-              }
-              let locale = matches[1];
-              let content = matches[2];
-
-              attrs[`description${locale || ''}`] = content;
-            });
-          } else if (prop.description) {
-            attrs.description = prop.description;
-          }
+          attrs.description = prop.description;
           break;
 
         case 'defaultValue':
