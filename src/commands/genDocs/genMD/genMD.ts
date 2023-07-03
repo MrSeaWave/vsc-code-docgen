@@ -34,7 +34,7 @@ let columns: Column[] = [
 export function genMD(api: ApiDefinition) {
   let { exportName, attrs = [] } = api;
 
-  let node = root([heading(exportName, 3), table(columns, attrs)]);
+  let node = root([heading([text(exportName)], 3), table(columns, attrs)]);
 
   return toMarkdown(node);
 }

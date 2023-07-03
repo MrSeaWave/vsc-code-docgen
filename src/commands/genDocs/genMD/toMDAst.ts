@@ -1,5 +1,6 @@
 /**
  * 转换成 [mdast](https://github.com/syntax-tree/mdast)
+ * // TODO 未来可以考虑把这部分封成npm包 （mdast-utils (包含转换ast，以及 toMarkdown 功能)
  */
 // import { unified } from 'unified';
 // import remarkStringify from 'remark-stringify';
@@ -15,6 +16,7 @@ import {
   TableRow,
   Text,
 } from 'mdast';
+import { ArrayType } from './interfaces';
 
 // function getProcessor() {
 //   return unified().use(remarkStringify, {
@@ -35,11 +37,14 @@ export function root(children: Root['children']): Root {
   return { type: 'root', children };
 }
 
-export function heading(name: string, depth: Heading['depth']): Heading {
+export function heading(
+  children: Heading['children'],
+  depth: Heading['depth']
+): Heading {
   return {
     type: 'heading',
     depth: depth || 4,
-    children: [text(name)],
+    children: children,
   };
 }
 
@@ -81,7 +86,7 @@ export function tableCell(children: TableCell['children']): TableCell {
   return { type: 'tableCell', children: children || [] };
 }
 
-type TableCellNode = PhrasingContent;
+type TableCellNode = ArrayType<TableCell['children']>;
 
 export type TableCellContent =
   | TableCellNode
