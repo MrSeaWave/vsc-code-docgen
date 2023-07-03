@@ -16,7 +16,8 @@ import {
   TableRow,
   Text,
 } from 'mdast';
-import { ArrayType } from './interfaces';
+import { ArrayType, FlattenOrArray } from './interfaces';
+import { normalizeChildren } from './utils';
 
 // function getProcessor() {
 //   return unified().use(remarkStringify, {
@@ -27,24 +28,18 @@ import { ArrayType } from './interfaces';
 //   });
 // }
 
-// function nodeWithChildren(type:string,children?:)
-
-function nodeWithValue(type: string, value: string) {
-  return { type, value };
-}
-
 export function root(children: Root['children']): Root {
   return { type: 'root', children };
 }
 
 export function heading(
-  children: Heading['children'],
+  children: FlattenOrArray<Heading['children']>,
   depth: Heading['depth']
 ): Heading {
   return {
     type: 'heading',
     depth: depth || 4,
-    children: children,
+    children: normalizeChildren(children),
   };
 }
 
@@ -73,8 +68,10 @@ export type Column = {
  * @param children
  * @returns
  */
-export function tableRow(children?: RowContent[]): TableRow {
-  return { type: 'tableRow', children: children || [] };
+export function tableRow(
+  children?: FlattenOrArray<TableRow['children']>
+): TableRow {
+  return { type: 'tableRow', children: normalizeChildren(children) };
 }
 
 /**
@@ -82,8 +79,10 @@ export function tableRow(children?: RowContent[]): TableRow {
  * @param children
  * @returns
  */
-export function tableCell(children: TableCell['children']): TableCell {
-  return { type: 'tableCell', children: children || [] };
+export function tableCell(
+  children: FlattenOrArray<TableCell['children']>
+): TableCell {
+  return { type: 'tableCell', children: normalizeChildren(children) };
 }
 
 type TableCellNode = ArrayType<TableCell['children']>;
@@ -128,14 +127,14 @@ export function table(
        *   children: [{type: 'text', value: 'bar'}]
        *  }
        */
-      columns.map((item) => tableCell([tableCellContentToNode(item.title)])),
+      columns.map((item) => tableCell(tableCellContentToNode(item.title))),
       // 内容区
       ...dataSource.map((data) => {
         let children = columns.map((item) => {
           const { dataIndex, render } = item;
           let raw = data[dataIndex] || '';
           let value = render ? render(raw) : text(String(raw));
-          return tableCell([tableCellContentToNode(value)]);
+          return tableCell(tableCellContentToNode(value));
         });
 
         return children;
