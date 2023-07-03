@@ -1,7 +1,7 @@
-import * as madastUtils from 'mdast-util-to-markdown';
+// import { toMarkdown } from 'mdast-util-to-markdown';
 import { ApiDefinition } from '../types';
 import { Column, heading, inlineCode, root, table, text } from './toMDAst';
-const { toMarkdown } = madastUtils;
+// const { toMarkdown } = madastUtils;
 
 let columns: Column[] = [
   { title: '属性名', dataIndex: 'identifier' },
@@ -31,10 +31,14 @@ let columns: Column[] = [
  *
  *
  */
-export function genMD(api: ApiDefinition) {
+export async function genMD(api: ApiDefinition) {
   let { exportName, attrs = [] } = api;
 
+  const { toMarkdown } = await import('mdast-util-to-markdown');
+  const { gfmToMarkdown } = await import('mdast-util-gfm');
   let node = root([heading([text(exportName)], 3), table(columns, attrs)]);
 
-  return toMarkdown(node);
+  const str = toMarkdown(node, { extensions: [gfmToMarkdown()] });
+  console.log('str', str);
+  return str;
 }
