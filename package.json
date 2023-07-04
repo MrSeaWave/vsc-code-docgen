@@ -3,6 +3,7 @@
   "displayName": "Code Docgen",
   "description": "React Ts code docgen",
   "version": "0.0.1",
+  "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.79.0"
   },
