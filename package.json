@@ -47,6 +47,14 @@
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrSeaWave/code-docgen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MrSeaWave/code-docgen/issues"
+  },
+  "homepage": "https://github.com/MrSeaWave/code-docgen",
   "devDependencies": {
     "@types/glob": "^8.1.0",
     "@types/mdast": "^3.0.11",
