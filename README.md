@@ -14,6 +14,7 @@
 - [ ] I18n
 - [ ] 增加部署脚本
 - [ ] 等待支持 PNPM 安装包的方式 https://github.com/microsoft/vscode-vsce/issues/421
+- [ ] 支持动态导入 ES 包 https://github.com/microsoft/vscode/issues/130367
 
 ## Requirements
 
