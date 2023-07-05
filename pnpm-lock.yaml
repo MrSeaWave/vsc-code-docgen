@@ -16,7 +16,7 @@ specifiers:
   mdast-util-to-markdown: ^1.5.0
   mocha: ^10.2.0
   react-docgen-typescript: ^2.2.2
-  typescript: ^5.1.3
+  typescript: ^5.1.6
 
 dependencies:
   mdast-util-gfm: 2.0.2

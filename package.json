@@ -3,7 +3,7 @@
   "displayName": "Code Docgen",
   "description": "React Ts code docgen",
   "version": "0.0.1",
-  "publisher":"MrSeaWave",
+  "publisher": "MrSeaWave",
   "icon": "assets/icon.png",
   "engines": {
     "vscode": "^1.79.0"
@@ -70,7 +70,7 @@
     "eslint": "^8.41.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
-    "typescript": "^5.1.3"
+    "typescript": "^5.1.6"
   },
   "dependencies": {
     "mdast-util-gfm": "^2.0.2",
