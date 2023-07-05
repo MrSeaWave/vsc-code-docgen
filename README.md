@@ -13,6 +13,7 @@
 - [ ] 增加生成文档表格配置
 - [ ] I18n
 - [ ] 增加部署脚本
+- [ ] 等待支持 PNPM 安装包的方式 https://github.com/microsoft/vscode-vsce/issues/421
 
 ## Requirements
 

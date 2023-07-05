@@ -42,6 +42,8 @@
     }
   },
   "scripts": {
+    "package": "vsce package",
+    "release": "vsce publish",
     "vscode:prepublish": "pnpm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
@@ -70,7 +72,8 @@
     "eslint": "^8.41.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vsce": "^2.15.0"
   },
   "dependencies": {
     "mdast-util-gfm": "^2.0.2",
