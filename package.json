@@ -44,7 +44,7 @@
   "scripts": {
     "package": "vsce package",
     "release": "vsce publish",
-    "vscode:prepublish": "pnpm run compile",
+    "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
@@ -72,12 +72,13 @@
     "eslint": "^8.41.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
-    "typescript": "^5.1.6",
     "vsce": "^2.15.0"
   },
   "dependencies": {
     "mdast-util-gfm": "^2.0.2",
     "mdast-util-to-markdown": "^1.5.0",
-    "react-docgen-typescript": "^2.2.2"
+    "react-docgen-typescript": "^2.2.2",
+    "require-from-string": "^2.0.2",
+    "typescript": "^5.1.6"
   }
 }

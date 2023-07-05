@@ -13,6 +13,7 @@ export async function genDocsToClipboard(file: vscode.Uri, options?: Options) {
     let message = docs ? '类型文档已成功复制到剪贴板📋' : '该文件暂无导出~';
     vscode.window.showInformationMessage(message);
   } catch (error) {
+    console.log('报错 \n', error);
     // @ts-expect-error
     vscode.window.showErrorMessage(error.message || '复制失败，请重试');
   }
