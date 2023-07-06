@@ -15,6 +15,14 @@
       "preLaunchTask": "${defaultBuildTask}"
     },
     {
+      "name": "Run TSC Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
+      "outFiles": ["${workspaceFolder}/out/**/*.js"],
+      "preLaunchTask": "npm: watch"
+    },
+    {
       "name": "Extension Tests",
       "type": "extensionHost",
       "request": "launch",

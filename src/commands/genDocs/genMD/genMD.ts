@@ -34,9 +34,9 @@ let columns: Column[] = [
  */
 export async function genMD(api: ApiDefinition) {
   let { exportName, attrs = [] } = api;
+  console.log('api', api);
   console.log('load import package');
   const { toMarkdown } = await import('mdast-util-to-markdown');
-  console.log('toMarkdown', toMarkdown);
   const { gfmToMarkdown } = await import('mdast-util-gfm');
   let node = root([heading([text(exportName)], 3), table(columns, attrs)]);
 

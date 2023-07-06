@@ -46,7 +46,7 @@ type Options = {};
  */
 export async function genReactDocs(filePath: string) {
   let apis = reactTsParser(filePath);
-
+  console.log('apis--->', apis);
   let calls = apis.map((api) => genMD(api));
   let docs = await Promise.all(calls);
   return { docs: docs.join('\n'), num: apis.length };

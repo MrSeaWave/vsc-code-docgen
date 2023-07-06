@@ -107,5 +107,7 @@ export function reactTsParser(filePath: string) {
       },
     }
   );
+  console.log('filePath', filePath);
+  console.log('componnetDoc', docParser.parse(filePath));
   return docParser.parse(filePath).map(toAtomPropsDefinition);
 }
