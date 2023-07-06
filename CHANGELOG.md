@@ -6,6 +6,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## 0.1.2
+
+- Update Readme
+
 ## 0.1.1
 
 - Fix ESM Build Error, see [Enable consuming of ES modules in extensions · Issue #130367 · microsoft/vscode](https://github.com/microsoft/vscode/issues/130367)
