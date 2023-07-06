@@ -8,6 +8,9 @@
 
 - 一键生成当前文件的类型文档（md）至剪贴板
 
+![docgen](https://github.com/MrSeaWave/vsc-code-docgen/assets/21967852/01c6eae0-eda4-4a45-ac1b-9836936b578e)
+
+
 ### TODO
 
 - [ ] 增加生成文档表格配置
