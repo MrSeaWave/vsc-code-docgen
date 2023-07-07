@@ -6,6 +6,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## 0.1.3
+
 - use pnpm https://github.com/microsoft/vscode-vsce/issues/421
 - Optimized vsc-pkg volume
 
