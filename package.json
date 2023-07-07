@@ -2,7 +2,7 @@
   "name": "vsc-code-docgen",
   "displayName": "Code Docgen",
   "description": "React Ts code docgen",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publisher": "MrSeaWave",
   "icon": "assets/icon.png",
   "engines": {
