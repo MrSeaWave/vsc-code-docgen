@@ -43,8 +43,8 @@
     }
   },
   "scripts": {
-    "package": "vsce package",
-    "release": "vsce publish",
+    "package": "vsce package --no-dependencies",
+    "release": "vsce publish --no-dependencies",
     "vscode:prepublish": "npm run build -- --minify",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js",
