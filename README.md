@@ -10,6 +10,14 @@
 
 ![docgen](https://github.com/MrSeaWave/vsc-code-docgen/assets/21967852/01c6eae0-eda4-4a45-ac1b-9836936b578e)
 
+可接受配置：
+`codeDocgen.tableColumns`
+
+```json
+{
+  [{title: '属性名', dataIndex: 'identifier',align:'left' | 'right' | 'center'}]
+}
+```
 
 ### TODO
 
