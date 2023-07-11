@@ -51,7 +51,9 @@
     "build": "esbuild ./src/extension.ts --bundle --outfile=dist/main.js --external:vscode --format=cjs --platform=node",
     "build:watch": "npm run build -- --sourcemap --watch",
     "build:sourcemap": "npm run build -- --sourcemap",
-    "build:types": "rm -rf dist & tsc -p ./"
+    "build:types": "rm -rf dist & tsc -p ./",
+    "clean": "rm -rf node_modules",
+    "next-release": "pnpm dlx tsx ./scripts/release"
   },
   "repository": {
     "type": "git",
