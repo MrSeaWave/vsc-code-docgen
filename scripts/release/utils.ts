@@ -1,4 +1,5 @@
 import figlet from 'figlet';
+
 /**
  * @desc 打印 logo
  * @param text

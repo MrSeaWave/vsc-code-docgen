@@ -1,12 +1,35 @@
+import { $ } from 'execa';
 import { execSync } from 'child_process';
 import { infoLog, warningLog } from './log';
 
+async function isWorkingTreeClean() {
+  try {
+    const { stdout: status } = await $`git status --porcelain`;
+    if (status.length) {
+      return false;
+    }
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function sleep(time) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(''), time * 1000);
+  });
+}
 /**
  * 检查当前工作区是否有未提交文件
  */
-export function checkGitStatus() {
-  const gitStatus = execa.sync('git', ['status', '--porcelain']).stdout;
+export async function checkWorkingTreeIsClean() {
+  await sleep(10);
+  let status = await isWorkingTreeClean();
+  if (!status) {
+    throw new Error('Unclean working tree. Commit or stash changes first.');
+  }
 }
+
 export function tryGitCommit(msg: string) {
   try {
     infoLog('Create a commit.');
