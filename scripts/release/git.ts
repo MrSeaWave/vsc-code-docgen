@@ -23,6 +23,7 @@ function sleep(time) {
  * 检查当前工作区是否有未提交文件
  */
 export async function checkWorkingTreeIsClean() {
+  // TODO Remove
   await sleep(10);
   let status = await isWorkingTreeClean();
   if (!status) {
