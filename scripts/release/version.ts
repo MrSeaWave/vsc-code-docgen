@@ -55,11 +55,24 @@ export function getNewVersionFrom(
  * @param v2
  * @returns
  */
-export function isGreaterThanOrEqualTo(v1: string, v2: string) {
+export function isLowerThanOrEqualTo(v1: string, v2: string) {
   isValidVersionWithError(v1);
   isValidVersionWithError(v2);
 
   return semver.lte(v1, v2);
+}
+
+/**
+ * v1>=v2
+ * @param v1
+ * @param v2
+ * @returns
+ */
+export function isGreaterThanOrEqualTo(v1: string, v2: string) {
+  isValidVersionWithError(v1);
+  isValidVersionWithError(v2);
+
+  return semver.gte(v1, v2);
 }
 
 export function prettyVersionDiff(
@@ -68,31 +81,7 @@ export function prettyVersionDiff(
 ) {
   // 1.2.4-beta.0
 
-  const newVersionList = getNewVersionFrom(oldVersion, releaseType).split('.');
-  let oldVersionList = oldVersion.split('.');
-
-  let firstVersionChange = false;
-  const output = [];
-  newVersionList.forEach((str, i) => {
-    output.push(str);
-  });
-
-  let version = output.join('.');
+  const version = getNewVersionFrom(oldVersion, releaseType);
 
   return chalk.dim.cyan(version);
-
-  // for (const [i, element] of newVersionList.entries()) {
-  //   if (element !== oldVersion[i] && !firstVersionChange) {
-  //     output.push(`${chalk.dim.cyan(element)}`);
-  //     firstVersionChange = true;
-  //   } else if (element.indexOf('-') >= 1) {
-  //     let preVersion = [];
-  //     preVersion = element.split('-');
-  //     output.push(`${chalk.dim.cyan(`${preVersion[0]}-${preVersion[1]}`)}`);
-  //   } else {
-  //     output.push(chalk.reset.dim(element));
-  //   }
-  // }
-
-  return output.join(chalk.reset.dim('.'));
 }

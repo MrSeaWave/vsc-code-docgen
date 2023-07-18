@@ -1,14 +1,13 @@
 import { exit } from 'process';
 import { ExitCode } from './interfaces';
 import { errorLog } from './log';
-import { printLogo, waitFnLoading } from './utils';
-import { checkWorkingTreeIsClean } from './git';
+import { printLogo } from './utils';
 import { oraPromise } from 'ora';
 import inquirer from 'inquirer';
 import {
   SEMVER_INCREMENTS,
   getNewVersionFrom,
-  isGreaterThanOrEqualTo,
+  isLowerThanOrEqualTo,
   isValidIncrements,
   isValidVersion,
   prettyVersionDiff,
@@ -26,7 +25,7 @@ export async function release() {
   // await oraPromise(checkWorkingTreeIsClean(), 'checking working tree is clean');
   // TODO 确定版本
 
-  const { version, customVersion } = await inquirer.prompt([
+  const answer = await inquirer.prompt([
     {
       name: 'version',
       type: 'list',
@@ -60,7 +59,7 @@ export async function release() {
           return 'Please specify a valid semver, for example, `1.2.3`. See https://semver.org';
         }
 
-        if (!isGreaterThanOrEqualTo(oldVersion, input)) {
+        if (isLowerThanOrEqualTo(input, oldVersion)) {
           return `Version must be greater than ${oldVersion}`;
         }
 
@@ -69,7 +68,8 @@ export async function release() {
     },
   ]);
 
-  console.log('version', oldVersion, version, customVersion);
+  let version = answer.version || answer.customVersion;
+  console.log('version', oldVersion, version);
 }
 
 export async function main(): Promise<void> {
