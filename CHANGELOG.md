@@ -4,6 +4,14 @@ All notable changes to the "vsc-code-docgen" extension will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+<!--
+### BREAKING CHANGES
+
+### Features
+
+### Bug Fixes
+-->
+
 ## [Unreleased]
 
 ## 0.1.3
