@@ -20,6 +20,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Others
 
 - update release script
+- add project code lint
 
 ## 0.1.3
 
