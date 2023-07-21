@@ -10,9 +10,16 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Features
 
 ### Bug Fixes
+
+
+### Others
 -->
 
 ## [Unreleased]
+
+### Others
+
+- update release script
 
 ## 0.1.3
 
