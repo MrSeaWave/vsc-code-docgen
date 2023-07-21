@@ -1,29 +1,32 @@
 // https://github.com/MrSeaWave/lint-config/blob/main/scripts/createRelease.js
 
-import fs from 'fs';
+import fs from 'node:fs/promises';
 import path from 'path';
+import { readFile, writeFile } from './file';
 
 // https://github.com/MrSeaWave/semi-design/blob/c0ef56c31a5c13adb050fbdb611e51da881f0cb8/scripts/release.js#L14
-export async function updateFiles(): Promise<void> {
-  let name = path.basename(relPath).trim().toLowerCase();
+export async function updateFiles(version: string): Promise<void> {
+  // update 'package.json':
+  // await updateManifestFile(relPath, operation);
 
-  switch (name) {
-    case 'package.json':
-      return updateManifestFile(relPath, operation);
-
-    default:
-      return updateChangeLog(relPath, operation);
-  }
+  // update change log
+  await updateChangeLog(version);
 }
 
 // Update package.json
-async function updateManifestFile(params: type) {}
+async function updateManifestFile(params: any) {}
 // Update ChangeLog
-export async function updateChangeLog(params: type) {
-  const content = fs
-    .readFileSync(path.join(__dirname, './CHANGELOG.md'))
-    .toString();
-  let changeLog = getUnReleasedChangeLog(content);
+export async function updateChangeLog(version: string) {
+  const changeLogPath = path.join(__dirname, '../../CHANGELOG.md');
+  const content = (await readFile(changeLogPath)).toString();
+  let newContent = content.replace(
+    '## [Unreleased]',
+    `## [Unreleased] \n\n## ${version}`
+  );
+  console.log('Content', content);
+  console.log('newContent', newContent);
+  await writeFile(changeLogPath, newContent);
+  // let changeLog = getUnReleasedChangeLog(content);
   // TODO 写文件
 }
 

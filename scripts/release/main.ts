@@ -12,6 +12,7 @@ import {
   isValidVersion,
   prettyVersionDiff,
 } from './version';
+import { updateFiles } from './updateFiles';
 
 // package.json 中的信息
 export const { version: oldVersion } = require('../../package.json');
@@ -70,6 +71,8 @@ export async function release() {
 
   let version = answer.version || answer.customVersion;
   console.log('version', oldVersion, version);
+
+  await updateFiles(version);
 }
 
 export async function main(): Promise<void> {
