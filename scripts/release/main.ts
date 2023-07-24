@@ -113,7 +113,7 @@ export async function main(): Promise<void> {
 
     await printLogo();
 
-    // await release();
+    await release();
 
     successLog('\n\nPublished Successfully 🎉🎉🎉');
   } catch (error) {
