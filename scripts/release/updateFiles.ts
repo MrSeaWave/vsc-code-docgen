@@ -1,10 +1,8 @@
-// https://github.com/MrSeaWave/lint-config/blob/main/scripts/createRelease.js
 import path from 'path';
 import { readFile, writeFile } from './file';
 import { errorLog } from './log';
 import { formatDate } from './utils';
 
-// https://github.com/MrSeaWave/semi-design/blob/c0ef56c31a5c13adb050fbdb611e51da881f0cb8/scripts/release.js#L14
 export async function updateFiles(version: string): Promise<void> {
   try {
     // update 'package.json':
@@ -27,6 +25,7 @@ async function updateManifestFile(version: string) {
   let newContent = JSON.stringify(data, null, 2);
   await writeFile(pkgJsonPath, newContent + '\n');
 }
+
 // Update ChangeLog
 export async function updateChangeLog(version: string) {
   const changeLogPath = path.join(__dirname, '../../CHANGELOG.md');
