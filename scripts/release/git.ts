@@ -36,7 +36,7 @@ export async function gitCommit(commit: Commit) {
   let args: string[] = [];
   args.push('--all');
   // args.push("--no-verify");
-  args.push(`--message ${message}`);
+  args.push(`--message "${message}"`);
   await $`git commit ${args.join(' ')}`;
 }
 
