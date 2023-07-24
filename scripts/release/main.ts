@@ -35,6 +35,7 @@ export async function release() {
   // Release VSC Pkg
   await releasePkg();
   // finally
+  // TODO create release to github
   // createRelease(version);
 }
 

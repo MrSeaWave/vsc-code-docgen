@@ -7,7 +7,6 @@ export async function updateFiles(version: string): Promise<void> {
   try {
     // update 'package.json':
     await updateManifestFile(version);
-
     // update change log
     await updateChangeLog(version);
   } catch (e) {
