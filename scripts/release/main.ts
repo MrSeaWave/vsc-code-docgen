@@ -71,6 +71,7 @@ async function askVersion() {
       when: (answers) => !answers.version,
       // filter: (input) => (isValidVersion(input) ? version : input),
       validate(input) {
+        // TODO 检查版本类型 SEMVER_INCREMENTS
         if (!isValidVersion(input)) {
           return 'Please specify a valid semver, for example, `1.2.3`. See https://semver.org';
         }

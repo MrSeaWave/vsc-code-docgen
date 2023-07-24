@@ -17,8 +17,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-## 0.1.4-0 (2023-07-24)
-
 ### Others
 
 - update release script
