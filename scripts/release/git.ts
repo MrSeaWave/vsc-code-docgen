@@ -1,4 +1,4 @@
-import { $ } from 'execa';
+import { execa, $ } from 'execa';
 
 async function isWorkingTreeClean() {
   try {
@@ -34,7 +34,10 @@ export async function gitCommit(commit: Commit) {
   args.push('--all');
   // args.push("--no-verify");
   args.push(`--message "${message}"`);
-  await $`git commit ${args.join(' ')}`;
+  // https://github.com/sindresorhus/execa/tree/7bc6eb41018e0a8553add519559055c7e7b6f322#shell-syntax
+  // https://github.com/sindresorhus/execa/tree/7bc6eb41018e0a8553add519559055c7e7b6f322#shell
+  // await $({ shell: true })`git commit ${args.join(' ')}`;
+  await execa('git', ['commit', ...args]);
 }
 
 export async function gitTag(tagName: string) {
