@@ -34,7 +34,7 @@ export async function gitCommit(commit: Commit) {
   args.push('--all');
   // args.push("--no-verify");
   args.push(`--message "${message}"`);
-  await $`git commit  ${args.join(' ')}`;
+  await $`git commit ${args.join(' ')}`;
 }
 
 export async function gitTag(tagName: string) {
