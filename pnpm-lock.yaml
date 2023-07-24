@@ -25,7 +25,7 @@ specifiers:
   mdast-util-to-markdown: ^1.5.0
   mocha: ^10.2.0
   ora: ^6.3.1
-  prettier: ^3.0.0
+  prettier: 2.8.8
   react-docgen-typescript: ^2.2.2
   semver: ^7.5.4
   tsx: ^3.12.7
@@ -61,7 +61,7 @@ devDependencies:
   lint-staged: 13.2.3
   mocha: 10.2.0
   ora: 6.3.1
-  prettier: 3.0.0
+  prettier: 2.8.8
   semver: 7.5.4
   tsx: 3.12.7
   vsce: 2.15.0
@@ -3490,9 +3490,9 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier/3.0.0:
-    resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
-    engines: {node: '>=14'}
+  /prettier/2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
+    engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
 
