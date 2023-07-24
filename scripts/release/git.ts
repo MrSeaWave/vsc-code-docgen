@@ -1,6 +1,7 @@
 import { $ } from 'execa';
 import { execSync } from 'child_process';
 import { infoLog, warningLog } from './log';
+const $$ = $({ stdio: 'inherit' });
 
 async function isWorkingTreeClean() {
   try {
@@ -14,33 +15,35 @@ async function isWorkingTreeClean() {
   }
 }
 
-function sleep(time) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(''), time * 1000);
-  });
-}
 /**
  * 检查当前工作区是否有未提交文件
  */
 export async function checkWorkingTreeIsClean() {
-  // TODO Remove
-  await sleep(10);
   let status = await isWorkingTreeClean();
   if (!status) {
     throw new Error('Unclean working tree. Commit or stash changes first.');
   }
 }
 
-export function tryGitCommit(msg: string) {
-  try {
-    infoLog('Create a commit.');
-    execSync('git add -A', { stdio: 'ignore' });
-    execSync(`git commit -m " ${msg} "`, { stdio: 'ignore' });
-    return true;
-  } catch (e) {
-    warningLog('Commit Error.');
-    console.warn(e);
-  }
+type Commit = {
+  message: string;
+  noVerify?: boolean;
+  all?: boolean;
+};
+
+export async function gitCommit(commit: Commit) {
+  const { message } = commit;
+  let args: string[] = [];
+  args.push('--all');
+  // args.push("--no-verify");
+  args.push(`--message ${message}`);
+  await $`git commit ${args.join(' ')}`;
 }
 
-// export function
+export async function gitTag(tagName: string) {
+  await $`git tag ${tagName}`;
+}
+
+export async function gitPush() {
+  await $`git push --tags`;
+}

@@ -1,6 +1,6 @@
 import { exit } from 'process';
 import { ExitCode } from './interfaces';
-import { errorLog } from './log';
+import { errorLog, infoLog } from './log';
 import { printLogo } from './utils';
 import { oraPromise } from 'ora';
 import inquirer from 'inquirer';
@@ -15,11 +15,11 @@ import {
 import { updateFiles } from './updateFiles';
 import { createRelease } from './createRelease';
 import { releasePkg } from './releasePkg';
+import { gitCommit, gitPush, gitTag } from './git';
+import { version as oldVersion } from '../../package.json';
 
-// package.json 中的信息
-export const { version: oldVersion } = require('../../package.json');
 /**
- * 发布新的pkg
+ * Release
  */
 export async function release() {
   console.log('Hello World');
@@ -31,10 +31,12 @@ export async function release() {
 
   console.log('version', oldVersion, version);
 
-  // await oraPromise(updateFiles(version), 'updating manifest file & changelog');
+  await oraPromise(updateFiles(version), 'updating manifest file & changelog');
 
-  // TODO commit log
-  releasePkg();
+  // Git Commit,Tag,Push
+  await gitWorkflow(version);
+  // Release VSC Pkg
+  await releasePkg();
   // finally
   // createRelease(version);
 }
@@ -44,6 +46,7 @@ export async function release() {
  * @returns version
  */
 async function askVersion() {
+  infoLog(`The current version is ${oldVersion}`);
   const answer = await inquirer.prompt([
     {
       name: 'version',
@@ -86,6 +89,19 @@ async function askVersion() {
   ]);
 
   return answer.version || answer.customVersion;
+}
+
+/**
+ * Git Commit,tag,push
+ * @param version
+ */
+export async function gitWorkflow(version: string) {
+  let msg = `chore(release): publish v${version} 🎨 🎨 🎨`;
+  let tagName = `v${version}`;
+
+  await oraPromise(gitCommit({ message: msg }), 'Git Commit');
+  await oraPromise(gitTag(tagName), 'Git Tag');
+  await oraPromise(gitPush(), 'Git Push');
 }
 
 export async function main(): Promise<void> {
