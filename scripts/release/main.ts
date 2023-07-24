@@ -14,6 +14,7 @@ import {
 } from './version';
 import { updateFiles } from './updateFiles';
 import { createRelease } from './createRelease';
+import { releasePkg } from './releasePkg';
 
 // package.json 中的信息
 export const { version: oldVersion } = require('../../package.json');
@@ -30,8 +31,12 @@ export async function release() {
 
   console.log('version', oldVersion, version);
 
-  await oraPromise(updateFiles(version), 'updating manifest file & changelog');
-  createRelease(version);
+  // await oraPromise(updateFiles(version), 'updating manifest file & changelog');
+
+  // TODO commit log
+  releasePkg();
+  // finally
+  // createRelease(version);
 }
 
 /**
@@ -99,6 +104,7 @@ export async function main(): Promise<void> {
 
 function errorHandler(error: Error): void {
   let message = error.message || String(error);
+  console.log('\n\n\n');
   errorLog(message);
   console.log(error.stack);
   // // 主动退出程序,跳过接下来的代码

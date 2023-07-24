@@ -44,7 +44,8 @@
   },
   "scripts": {
     "package": "vsce package --no-dependencies",
-    "release": "vsce publish --no-dependencies",
+    "release": "tsx ./scripts/release",
+    "release:only": "vsce publish --no-dependencies",
     "vscode:prepublish": "npm run build -- --minify",
     "lint": "eslint src --ext ts",
     "lint:fix": "npm run lint -- --fix",
@@ -54,7 +55,6 @@
     "build:sourcemap": "npm run build -- --sourcemap",
     "build:types": "rm -rf dist & tsc -p ./",
     "clean": "rm -rf node_modules",
-    "next-release": "tsx ./scripts/release",
     "prepare": "husky install"
   },
   "repository": {
