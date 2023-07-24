@@ -33,7 +33,7 @@ export async function gitCommit(commit: Commit) {
   let args: string[] = [];
   args.push('--all');
   // args.push("--no-verify");
-  args.push(`--message "${message}"`);
+  args.push('--message', message);
   // https://github.com/sindresorhus/execa/tree/7bc6eb41018e0a8553add519559055c7e7b6f322#shell-syntax
   // https://github.com/sindresorhus/execa/tree/7bc6eb41018e0a8553add519559055c7e7b6f322#shell
   // await $({ shell: true })`git commit ${args.join(' ')}`;
