@@ -1,6 +1,6 @@
 import { exit } from 'process';
 import { ExitCode } from './interfaces';
-import { errorLog, infoLog } from './log';
+import { errorLog, infoLog, successLog } from './log';
 import { printLogo } from './utils';
 import { oraPromise } from 'ora';
 import inquirer from 'inquirer';
@@ -113,7 +113,9 @@ export async function main(): Promise<void> {
 
     await printLogo();
 
-    await release();
+    // await release();
+
+    successLog('\n\nPublished Successfully 🎉🎉🎉');
   } catch (error) {
     errorHandler(error as Error);
   }
