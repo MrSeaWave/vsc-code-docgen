@@ -45,5 +45,5 @@ export async function gitTag(tagName: string) {
 }
 
 export async function gitPush() {
-  await $`git push --tags`;
+  await $`git push --follow-tags`;
 }
