@@ -31,7 +31,7 @@ async function updateManifestFile(version: string) {
 export async function updateChangeLog(version: string) {
   const changeLogPath = path.join(__dirname, '../../CHANGELOG.md');
   const content = await readFile(changeLogPath);
-  let title = `## [Unreleased] \n\n## ${version} (${formatDate()})`;
+  let title = `## [Unreleased] \n\n## ${version} (${formatDate(new Date())})`;
   let newContent = content.replace('## [Unreleased]', title);
   await writeFile(changeLogPath, newContent);
 }

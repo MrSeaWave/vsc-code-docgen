@@ -18,8 +18,7 @@ export function sleep(time: number) {
   });
 }
 
-export function formatDate(time: string | number | Date = '') {
-  let date = new Date(time);
+export function formatDate(date: Date) {
   let year = date.getFullYear();
   let month = date.getMonth() + 1;
   let day = date.getDate();

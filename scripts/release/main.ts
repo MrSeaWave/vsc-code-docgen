@@ -26,8 +26,6 @@ export async function release() {
 
   const version = await askVersion();
 
-  console.log('version', oldVersion, version);
-
   await oraPromise(updateFiles(version), 'updating manifest file & changelog');
 
   // Git Commit,Tag,Push
