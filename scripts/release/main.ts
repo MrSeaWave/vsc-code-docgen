@@ -13,6 +13,7 @@ import {
   prettyVersionDiff,
 } from './version';
 import { updateFiles } from './updateFiles';
+import { createRelease } from './createRelease';
 
 // package.json 中的信息
 export const { version: oldVersion } = require('../../package.json');
@@ -30,6 +31,7 @@ export async function release() {
   console.log('version', oldVersion, version);
 
   await oraPromise(updateFiles(version), 'updating manifest file & changelog');
+  createRelease(version);
 }
 
 /**

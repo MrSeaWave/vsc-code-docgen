@@ -11,3 +11,16 @@ export async function printLogo(text: string = 'Release') {
   const result = figlet.textSync(text);
   console.log(result);
 }
+
+export function formatDate(time: string | number | Date = '') {
+  let date = new Date(time);
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  return [year, month, day].map(formatNumber).join('-');
+}
+
+function formatNumber(n: number) {
+  let val = n.toString();
+  return val[1] ? val : '0' + val;
+}

@@ -2,6 +2,7 @@
 import path from 'path';
 import { readFile, writeFile } from './file';
 import { errorLog } from './log';
+import { formatDate } from './utils';
 
 // https://github.com/MrSeaWave/semi-design/blob/c0ef56c31a5c13adb050fbdb611e51da881f0cb8/scripts/release.js#L14
 export async function updateFiles(version: string): Promise<void> {
@@ -30,7 +31,7 @@ async function updateManifestFile(version: string) {
 export async function updateChangeLog(version: string) {
   const changeLogPath = path.join(__dirname, '../../CHANGELOG.md');
   const content = await readFile(changeLogPath);
-  let title = `## [Unreleased] \n\n## ${version}`;
+  let title = `## [Unreleased] \n\n## ${version} (${formatDate()})`;
   let newContent = content.replace('## [Unreleased]', title);
   await writeFile(changeLogPath, newContent);
 }
