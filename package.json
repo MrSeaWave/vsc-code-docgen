@@ -54,7 +54,7 @@
     "build:sourcemap": "npm run build -- --sourcemap",
     "build:types": "rm -rf dist & tsc -p ./",
     "clean": "rm -rf node_modules",
-    "next-release": "pnpm dlx tsx ./scripts/release",
+    "next-release": "tsx ./scripts/release",
     "prepare": "husky install"
   },
   "repository": {
@@ -90,6 +90,7 @@
     "ora": "^6.3.1",
     "prettier": "^3.0.0",
     "semver": "^7.5.4",
+    "tsx": "^3.12.7",
     "vsce": "^2.15.0"
   },
   "dependencies": {

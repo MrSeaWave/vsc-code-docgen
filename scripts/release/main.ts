@@ -24,8 +24,19 @@ export async function release() {
 
   // TODO ADD Check work tree clean
   // await oraPromise(checkWorkingTreeIsClean(), 'checking working tree is clean');
-  // TODO 确定版本
 
+  const version = await askVersion();
+
+  console.log('version', oldVersion, version);
+
+  await oraPromise(updateFiles(version), 'updating manifest file & changelog');
+}
+
+/**
+ * ask version
+ * @returns version
+ */
+async function askVersion() {
   const answer = await inquirer.prompt([
     {
       name: 'version',
@@ -44,9 +55,7 @@ export async function release() {
         },
       ],
       filter: (input) => {
-        return isValidIncrements(input)
-          ? getNewVersionFrom(oldVersion, input)
-          : input;
+        return isValidIncrements(input) ? getNewVersionFrom(oldVersion, input) : input;
       },
     },
     {
@@ -69,10 +78,7 @@ export async function release() {
     },
   ]);
 
-  let version = answer.version || answer.customVersion;
-  console.log('version', oldVersion, version);
-
-  await updateFiles(version);
+  return answer.version || answer.customVersion;
 }
 
 export async function main(): Promise<void> {
