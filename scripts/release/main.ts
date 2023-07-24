@@ -15,7 +15,7 @@ import {
 import { updateFiles } from './updateFiles';
 import { createRelease } from './createRelease';
 import { releasePkg } from './releasePkg';
-import { gitCommit, gitPush, gitTag } from './git';
+import { checkWorkingTreeIsClean, gitCommit, gitPush, gitTag } from './git';
 import { version as oldVersion } from '../../package.json';
 
 /**
@@ -24,8 +24,7 @@ import { version as oldVersion } from '../../package.json';
 export async function release() {
   console.log('Hello World');
 
-  // TODO ADD Check work tree clean
-  // await oraPromise(checkWorkingTreeIsClean(), 'checking working tree is clean');
+  await oraPromise(checkWorkingTreeIsClean(), 'checking working tree is clean');
 
   const version = await askVersion();
 
