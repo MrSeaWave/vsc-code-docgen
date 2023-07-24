@@ -1,7 +1,7 @@
 {
   "name": "vsc-code-docgen",
   "displayName": "Code Docgen",
-  "description": "React Ts code docgen",
+  "description": "Generating code type documentation (currently only valid for react ts)",
   "version": "0.1.4",
   "publisher": "MrSeaWave",
   "icon": "assets/icon.png",
@@ -10,6 +10,12 @@
   },
   "categories": [
     "Other"
+  ],
+  "keywords": [
+    "docgen",
+    "ts",
+    "react",
+    "tsx"
   ],
   "activationEvents": [],
   "main": "./dist/main.js",
