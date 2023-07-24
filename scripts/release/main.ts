@@ -8,6 +8,7 @@ import {
   SEMVER_INCREMENTS,
   getNewVersionFrom,
   isLowerThanOrEqualTo,
+  isPreReleaseVersion,
   isValidIncrements,
   isValidVersion,
   prettyVersionDiff,
@@ -71,13 +72,16 @@ async function askVersion() {
       when: (answers) => !answers.version,
       // filter: (input) => (isValidVersion(input) ? version : input),
       validate(input) {
-        // TODO 检查版本类型 SEMVER_INCREMENTS
         if (!isValidVersion(input)) {
           return 'Please specify a valid semver, for example, `1.2.3`. See https://semver.org';
         }
 
         if (isLowerThanOrEqualTo(input, oldVersion)) {
           return `Version must be greater than ${oldVersion}`;
+        }
+
+        if (isPreReleaseVersion(input)) {
+          return `Don't support prerelease version: ${input}`;
         }
 
         return true;

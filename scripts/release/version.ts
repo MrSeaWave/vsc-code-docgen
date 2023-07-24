@@ -3,6 +3,7 @@ import chalk from 'chalk';
 
 // The VS Marketplace doesn't support prerelease versions: '0.1.4-0'
 // https://code.visualstudio.com/api/working-with-extensions/publishing-extension#prerelease-extensions
+// https://github.com/microsoft/vscode-vsce/issues/148
 export const SEMVER_INCREMENTS: semver.ReleaseType[] = [
   'patch',
   'minor',
@@ -32,6 +33,11 @@ export function isValidIncrementsWithError(type: semver.ReleaseType) {
     throw new Error(`Version should be either ${SEMVER_INCREMENTS.join(', ')}.`);
   }
 }
+
+export function isPreReleaseVersion(version: string) {
+  return version.includes('-');
+}
+
 export function getNewVersionFrom(version: string, releaseType: semver.ReleaseType) {
   isValidVersionWithError(version);
   isValidIncrementsWithError(releaseType);
