@@ -1,7 +1,4 @@
 import { $ } from 'execa';
-import { execSync } from 'child_process';
-import { infoLog, warningLog } from './log';
-const $$ = $({ stdio: 'inherit' });
 
 async function isWorkingTreeClean() {
   try {
@@ -37,7 +34,7 @@ export async function gitCommit(commit: Commit) {
   args.push('--all');
   // args.push("--no-verify");
   args.push(`--message "${message}"`);
-  await $`git commit ${args.join(' ')}`;
+  await $`git commit -- ${args.join(' ')}`;
 }
 
 export async function gitTag(tagName: string) {

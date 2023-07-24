@@ -22,6 +22,7 @@ import { version as oldVersion } from '../../package.json';
  * Release
  */
 export async function release() {
+  // TODO rm dist & pnpm i again
   await oraPromise(checkWorkingTreeIsClean(), 'checking working tree is clean');
 
   const version = await askVersion();
