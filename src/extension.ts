@@ -18,15 +18,12 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.window.showInformationMessage('Hello World from Code Docgen!');
   });
 
-  let genDocToClipboard = vscode.commands.registerCommand(
-    Commands.genDocToClipboard,
-    (uri) => {
-      genDocsToClipboard(uri);
-      // vscode.window.showInformationMessage(
-      //   `当前文件(夹)路径是：${uri ? uri.path : '空'}`
-      // );
-    }
-  );
+  let genDocToClipboard = vscode.commands.registerCommand(Commands.GenDocToClipboard, (uri) => {
+    genDocsToClipboard(uri);
+    // vscode.window.showInformationMessage(
+    //   `当前文件(夹)路径是：${uri ? uri.path : '空'}`
+    // );
+  });
   context.subscriptions.push(disposable, genDocToClipboard);
 }
 

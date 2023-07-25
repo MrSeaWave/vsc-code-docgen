@@ -4,7 +4,26 @@ All notable changes to the "vsc-code-docgen" extension will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+<!--
+### BREAKING CHANGES
+
+### Features
+
+### Bug Fixes
+
+
+### Others
+-->
+
 ## [Unreleased]
+
+## 0.1.4 (2023-07-24)
+
+### Others
+
+- update release script
+- add project code lint
+- use [tsx](https://www.npmjs.com/package/tsx) directly
 
 ## 0.1.3
 
