@@ -1,0 +1,18 @@
+name: Comment on More Info
+on:
+  issues:
+    types:
+      - labeled
+jobs:
+  add-comment:
+    if: github.event.label.name == 'need-more-info'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Add comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            This bug is missing information needed to diagnose the problem. Please provide the missing information. s**If you don't provide a sample to reproduce your issue, your bug will most likely be closed.**
