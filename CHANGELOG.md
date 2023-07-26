@@ -17,6 +17,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Other
+
+- 增加 Github pr & issues templates
+
 ## 0.1.4 (2023-07-24)
 
 ### Others
