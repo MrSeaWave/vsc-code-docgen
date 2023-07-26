@@ -15,4 +15,4 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            This bug is missing information needed to diagnose the problem. Please provide the missing information. s**If you don't provide a sample to reproduce your issue, your bug will most likely be closed.**
+            This bug is missing information needed to diagnose the problem. Please provide the missing information. **If you don't provide a sample to reproduce your issue, your bug will most likely be closed.**
