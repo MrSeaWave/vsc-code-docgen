@@ -40,8 +40,19 @@ export async function gitCommit(commit: Commit) {
   await execa('git', ['commit', ...args]);
 }
 
-export async function gitTag(tagName: string) {
-  await $`git tag ${tagName}`;
+export async function gitTag(tagName: string, message: string) {
+  // 必须要加 -a 与 -m ，否则 （git:2.38.0）git push --follow-tags 会不生效
+  // https://git-scm.com/docs/git-push/2.38.0
+  let args = [
+    tagName,
+    // Create an annotated tag, which is recommended for releases.
+    // See https://git-scm.com/docs/git-tag
+    '--annotate',
+    // Use the same commit message for the tag
+    '--message',
+    message,
+  ];
+  await execa('git', ['tag', ...args]);
 }
 
 export async function gitPush() {
